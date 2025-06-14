@@ -24,3 +24,17 @@ def filter_stations_by_city(stations, city_name):
         station for station in stations
         if station.get("city", {}).get("name", "").lower() == city_name.lower()
     ]
+
+
+def get_sensors_for_station(station_id):
+    """
+    Pobiera listę czujników (stanowisk pomiarowych) dla danej stacji.
+    """
+    url = f"https://api.gios.gov.pl/pjp-api/rest/station/sensors/{station_id}"
+    try:
+        response = requests.get(url)
+        response.raise_for_status()
+        return response.json()
+    except requests.exceptions.RequestException as e:
+        print("Błąd podczas pobierania czujników:", e)
+        return []

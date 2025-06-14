@@ -4,11 +4,12 @@ def create_connection():
     return sqlite3.connect("air_quality.db")
 
 def create_table():
+    '''Funkcja tworząca nową tabelę do zapisu danych o stacjach'''
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS stations (
-            id INTEGER PRIMARY KEY,
+            id_stacji INTEGER PRIMARY KEY,
             name TEXT,
             lat TEXT,
             lon TEXT,
@@ -21,10 +22,11 @@ def create_table():
 
 
 def insert_station(station):
+    '''Funkcja zapisuje dane stacji'''
     conn = create_connection()
     cursor = conn.cursor()
     cursor.execute("""
-        INSERT OR REPLACE INTO stations (id, name, lat, lon, city, street)
+        INSERT OR REPLACE INTO stations (id_stacji, name, lat, lon, city, street)
         VALUES (?, ?, ?, ?, ?, ?)
     """, (
         station['id'],
@@ -33,6 +35,81 @@ def insert_station(station):
         station['gegrLon'],
         station.get('city', {}).get('name', ''),
         station.get('addressStreet', '')
+    ))
+    conn.commit()
+    conn.close()
+
+
+def create_measurements_table():
+    '''Funkcja tworząca nową tabelę do zapisu danych z sensora'''
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS measurements (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            sensor_id INTEGER,
+            date TEXT,
+            value REAL,
+            param_key TEXT
+        );
+    """)
+    conn.commit()
+    conn.close()
+
+
+def insert_measurements(sensor_id, param_key, measurements):
+    '''Funkcja zapisuje dane z sensora'''
+    conn = create_connection()
+    cursor = conn.cursor()
+
+    for m in measurements:
+        cursor.execute("""
+            INSERT INTO measurements (sensor_id, date, value, param_key)
+            VALUES (?, ?, ?, ?)
+        """, (
+            sensor_id,
+            m['date'],
+            m['value'],
+            param_key
+        ))
+
+    conn.commit()
+    conn.close()
+
+
+def create_sensors_table():
+    '''Funkcja tworząca tabelę czujników (stanowisk pomiarowych)'''
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS sensors (
+            id_sensor INTEGER PRIMARY KEY,
+            station_id INTEGER,
+            param_name TEXT,
+            param_formula TEXT,
+            param_code TEXT,
+            param_id INTEGER
+        );
+    """)
+    conn.commit()
+    conn.close()
+
+
+
+def insert_sensor(sensor):
+    '''Funkcja zapisuje dane czujnika do bazy danych'''
+    conn = create_connection()
+    cursor = conn.cursor()
+    cursor.execute("""
+        INSERT OR REPLACE INTO sensors (id_sensor, station_id, param_name, param_formula, param_code, param_id)
+        VALUES (?, ?, ?, ?, ?, ?)
+    """, (
+        sensor['id'],
+        sensor['stationId'],
+        sensor['param']['paramName'],
+        sensor['param']['paramFormula'],
+        sensor['param']['paramCode'],
+        sensor['param']['idParam']
     ))
     conn.commit()
     conn.close()
