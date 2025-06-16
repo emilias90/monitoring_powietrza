@@ -1,7 +1,11 @@
+import os
 import sqlite3
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DB_PATH = os.path.join(BASE_DIR, "air_quality.db")
+
 def create_connection():
-    return sqlite3.connect("air_quality.db")
+    return sqlite3.connect(DB_PATH)
 
 def create_table():
     '''Funkcja tworząca nową tabelę do zapisu danych o stacjach'''
@@ -113,3 +117,19 @@ def insert_sensor(sensor):
     ))
     conn.commit()
     conn.close()
+
+def clear_database():
+    conn = sqlite3.connect("air_quality.db")
+    cursor = conn.cursor()
+
+    try:
+        cursor.execute("DELETE FROM measurements;")
+        cursor.execute("DELETE FROM sensors;")
+        cursor.execute("DELETE FROM stations;")
+        conn.commit()
+    except Exception as e:
+        conn.rollback()
+        raise e  # Przekaż błąd do GUI
+    finally:
+        cursor.close()
+        conn.close()

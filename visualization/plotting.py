@@ -32,7 +32,19 @@ def plot_measurements(measurements, param_name):
     max_idx = values.index(max_val)
 
     plt.figure(figsize=(10, 5))
-    plt.plot(dates, values, marker='o', linestyle='-', color='blue', label=param_name)
+
+   # Rysujemy wszystkie punkty oprócz min i max jako niebieskie
+    filtered_dates = [d for i, d in enumerate(dates) if i not in (min_idx, max_idx)]
+    filtered_values = [v for i, v in enumerate(values) if i not in (min_idx, max_idx)]
+
+    # Niebieska linia łącząca wszystkie punkty
+    plt.plot(dates, values, linestyle='-', color='blue', alpha=0.3)
+
+    # Niebieskie punkty poza min i max
+    plt.scatter(filtered_dates, filtered_values, color='blue', label=param_name)
+
+
+
     plt.scatter(dates[min_idx], min_val, color='green', label=f'Min: {min_val} ({dates[min_idx].strftime("%Y-%m-%d %H:%M")})')
     plt.scatter(dates[max_idx], max_val, color='red', label=f'Max: {max_val} ({dates[max_idx].strftime("%Y-%m-%d %H:%M")})')
     plt.title(f"Wykres: {param_name}")

@@ -2,7 +2,7 @@ import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import datetime
 import matplotlib.pyplot as plt
-from api.stations import get_all_stations, filter_stations_by_city, get_sensors_for_station, APIConnectionError
+from api.stations import get_all_stations, filter_stations_by_city, get_sensors_for_station
 from api.sensors import get_sensor_data
 from db.database import (
     create_table,
@@ -125,12 +125,7 @@ class AirQualityApp:
             messagebox.showwarning("Uwaga", "Wprowadź nazwę miasta.")
             return
 
-        try:
-            all_stations = get_all_stations()
-        except APIConnectionError as e:
-            messagebox.showerror("Błąd połączenia", str(e))
-            all_stations = []
-
+        all_stations = get_all_stations()
         self.stations = filter_stations_by_city(all_stations, city)
 
         if not self.stations:
@@ -164,11 +159,7 @@ class AirQualityApp:
 
         index = self.station_box.current()
         station = self.stations[index]
-        try:
-            self.sensors = get_sensors_for_station(station['id'])
-        except APIConnectionError as e:
-            messagebox.showerror("Błąd połączenia", str(e))
-            return
+        self.sensors = get_sensors_for_station(station['id'])
 
         if not self.sensors:
             messagebox.showinfo("Brak czujników", "Brak czujników dla tej stacji.")
@@ -190,8 +181,8 @@ class AirQualityApp:
            Jeśli nie – wyświetla ostrzeżenie i przerywa działanie.
         2. Pobiera dane pomiarowe dla wybranego czujnika (po ID) z API.
         3. Weryfikuje, czy dane istnieją i zawierają pomiary. Jeśli nie – informuje użytkownika.
-        4. Filtrowane są tylko wartości, które posiadają niepuste wartości (`value is not None`).
-        5. Z danych wyodrębnia listę unikalnych dat (w formacie `YYYY-MM-DD`) i sortuje je.
+        4. Filtrowane są tylko wartości, które posiadają niepuste wartości (value is not None).
+        5. Z danych wyodrębnia listę unikalnych dat (w formacie YYYY-MM-DD) i sortuje je.
         6. Jeśli nie ma dostępnych dat – wyświetla odpowiedni komunikat.
         7. Wypełnia listy wyboru (Comboboxy) dla zakresu dat („od” i „do”) dostępnymi wartościami.
         8. Resetuje ewentualne wcześniejsze wybory dat.
@@ -206,11 +197,7 @@ class AirQualityApp:
         sensor = self.sensors[index]
         self.sensor_id = sensor['id']
 
-        try:
-            data = get_sensor_data(self.sensor_id)
-        except APIConnectionError as e:
-            messagebox.showerror("Błąd połączenia", str(e))
-            return
+        data = get_sensor_data(self.sensor_id)
 
         if not data or 'values' not in data:
             messagebox.showinfo("Brak danych", "Brak danych pomiarowych dla tego czujnika.")
@@ -246,16 +233,16 @@ class AirQualityApp:
 
         Działanie funkcji:
         1. Sprawdza, czy użytkownik wybrał czujnik z listy. Jeśli nie – wyświetla ostrzeżenie i kończy działanie.
-        2. Na podstawie indeksu w `sensor_box` identyfikuje czujnik oraz jego ID i nazwę parametru.
+        2. Na podstawie indeksu w sensor_box identyfikuje czujnik oraz jego ID i nazwę parametru.
         3. Pobiera dane pomiarowe z API dla danego czujnika.
         4. Jeśli dane są puste lub nie zawierają listy pomiarów – wyświetla informację i kończy działanie.
         5. Wstawia dane pomiarowe do lokalnej bazy danych.
-        6. Filtruje dane, pozostawiając tylko te, które zawierają wartość (`value != None`), i zapisuje je do `self.raw_values`.
+        6. Filtruje dane, pozostawiając tylko te, które zawierają wartość (value != None), i zapisuje je do self.raw_values.
         7. Tworzy listę unikalnych dat z danych i przypisuje je do comboboxów wyboru zakresu dat.
         8. Ustawia domyślny zakres dat, jeśli nie został wcześniej wybrany.
         9. Pobiera wartości mieszczące się w wybranym zakresie dat.
         10. Oblicza i wyświetla statystyki: minimum, maksimum oraz średnią wartość dla danego okresu.
-        11. Wyniki są prezentowane w GUI oraz przechowywane w `self.filtered_values`.
+        11. Wyniki są prezentowane w GUI oraz przechowywane w self.filtered_values.
 
         Efekt:
         - Statystyki (minimum, maksimum, średnia) dla pomiarów z wybranego zakresu dat zostają obliczone i pokazane w interfejsie.
@@ -268,13 +255,7 @@ class AirQualityApp:
         index = self.sensor_box.current()
         sensor = self.sensors[index]
         self.sensor_id = sensor['id']
-
-        try:
-            data = get_sensor_data(self.sensor_id)
-        except APIConnectionError as e:
-            messagebox.showerror("Błąd połączenia", str(e))
-            return
-
+        data = get_sensor_data(self.sensor_id)
         self.param_name = sensor['param']['paramName']
 
         if not data or 'values' not in data:
@@ -376,14 +357,14 @@ class AirQualityApp:
 
     def get_filtered_values(self):
         """
-        Zwraca listę pomiarów (data, wartość) z `self.raw_values`,
+        Zwraca listę pomiarów (data, wartość) z self.raw_values,
         które mieszczą się w wybranym zakresie dat określonym przez
-        pola `date_from_var` i `date_to_var`.
+        pola date_from_var i date_to_var.
 
-        Jeśli `raw_values` nie istnieje lub zakres dat jest niepoprawny,
+        Jeśli raw_values nie istnieje lub zakres dat jest niepoprawny,
         zwraca pustą listę.
 
-        Format daty w `raw_values` jest oczekiwany jako ISO (YYYY-MM-DD...).
+        Format daty w raw_values jest oczekiwany jako ISO (YYYY-MM-DD...).
 
         Returns:
             list of tuples: [(data_str, wartosc_float), ...] spełniające kryterium dat.
@@ -434,7 +415,7 @@ class AirQualityApp:
                 messagebox.showerror("Błąd", f"Wystąpił problem podczas usuwania danych:\n{e}")
 
 
-# if __name__ == "__main__":
-#     root = tk.Tk()
-#     app = AirQualityApp(root)
-#     root.mainloop()
+if __name__ == "__main__":
+    root = tk.Tk()
+    app = AirQualityApp(root)
+    root.mainloop()
