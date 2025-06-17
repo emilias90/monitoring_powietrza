@@ -38,9 +38,6 @@ Aplikacja umożliwia:
 
 
 Instalacja
-Sklonuj repozytorium:
-
-
 git clone ********** # (tu podam później link do ostatecznego repozytorium, np. GitHub)
 cd **********
 Uruchom aplikację:
