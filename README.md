@@ -106,4 +106,3 @@ Kod można łatwo rozbudować np. o inne formy wizualizacji, eksport danych do C
 Autor:
 
 Emilia Staśkowiak
-
