@@ -33,12 +33,10 @@ Aplikacja umożliwia:
 - Biblioteki:
   - `tkinter`
   - `matplotlib`
-  - `requests` ********** (dodaj, jeśli korzystasz w modułach `api/`)
+  - `requests` 
   - `sqlite3` (wbudowany)
 
-Zainstaluj brakujące biblioteki komendą:
 
-pip install matplotlib requests
 Instalacja
 Sklonuj repozytorium:
 
@@ -48,7 +46,7 @@ cd **********
 Uruchom aplikację:
 
 
-python app.py  ********** # (lub inny plik główny, jeśli ma inną nazwę)
+projekt_zaliczeniowy
 Struktura projektu
 ├── api/
 │   ├── stations.py         # Obsługa zapytań dot. stacji
