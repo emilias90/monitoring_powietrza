@@ -48,16 +48,27 @@ Uruchom aplikację:
 
 projekt_zaliczeniowy
 Struktura projektu
+
 ├── api/
+
 │   ├── stations.py         # Obsługa zapytań dot. stacji
+
 │   └── sensors.py          # Obsługa zapytań dot. czujników
+
 ├── db/
+
 │   └── database.py         # Operacje na bazie danych SQLite
+
 ├── visualization/
+
 │   └── plotting.py         # Tworzenie wykresów i analiz
+
 ├── app.py                  # Główny plik z interfejsem GUI
+
 ├── main.py                 # Plik do uruchomienia GUI
+
 ├── README.md               # Ten plik
+
 
 
 Sposób użycia
