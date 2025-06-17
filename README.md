@@ -16,7 +16,8 @@ Aplikacja desktopowa w Pythonie służąca do monitorowania jakości powietrza w
 
 ## Opis projektu
 
-Projekt stworzony jako ************ (np. zaliczenie kursu, projekt własny, praca inżynierska). Aplikacja umożliwia:
+Projekt stworzony jako zaliczenie studiów podyplomowych "Akademia Programowania w Pythonie". 
+Aplikacja umożliwia:
 
 - Wyszukiwanie stacji pomiarowych na podstawie miasta
 - Wybór dostępnych czujników i zakresów dat
@@ -28,7 +29,7 @@ Projekt stworzony jako ************ (np. zaliczenie kursu, projekt własny, prac
 
 ## Wymagania
 
-- Python 3.10+ ********** (upewnij się, że wersja się zgadza)
+- Python 3.13
 - Biblioteki:
   - `tkinter`
   - `matplotlib`
@@ -37,26 +38,18 @@ Projekt stworzony jako ************ (np. zaliczenie kursu, projekt własny, prac
 
 Zainstaluj brakujące biblioteki komendą:
 
-```bash
 pip install matplotlib requests
 Instalacja
 Sklonuj repozytorium:
 
-bash
-Kopiuj
-Edytuj
-git clone ********** # (tu podaj link do repozytorium, np. GitHub)
+
+git clone ********** # (tu podam później link do ostatecznego repozytorium, np. GitHub)
 cd **********
 Uruchom aplikację:
 
-bash
-Kopiuj
-Edytuj
+
 python app.py  ********** # (lub inny plik główny, jeśli ma inną nazwę)
 Struktura projektu
-bash
-Kopiuj
-Edytuj
 ├── api/
 │   ├── stations.py         # Obsługa zapytań dot. stacji
 │   └── sensors.py          # Obsługa zapytań dot. czujników
@@ -65,12 +58,12 @@ Edytuj
 ├── visualization/
 │   └── plotting.py         # Tworzenie wykresów i analiz
 ├── app.py                  # Główny plik z interfejsem GUI
+├── main.py                 # Plik do uruchomienia GUI
 ├── README.md               # Ten plik
-Uwaga: folder api/ powinien zawierać własne funkcje do zapytań do zewnętrznego API GIOŚ.
-********** (Jeśli korzystasz z innego API, podaj jego nazwę i sposób działania)
+
 
 Sposób użycia
-Uruchom aplikację (app.py)
+Uruchom aplikację (main.py)
 
 Wpisz nazwę miasta i kliknij "Pobierz stacje"
 
@@ -85,9 +78,7 @@ Przeglądaj statystyki, rysuj wykresy i zarządzaj bazą danych
 Przykład działania
 (Tutaj możesz dodać zrzuty ekranu z aplikacji GUI pokazujące interfejs, np. screeny app.png, plot.png i dodać coś w stylu:)
 
-scss
-Kopiuj
-Edytuj
+
 ![Interfejs główny](docs/screenshot1.png)
 ![Wykres pomiarów](docs/plot_example.png)
 Uwagi
@@ -97,23 +88,6 @@ Domyślna baza danych to plik SQLite zapisany lokalnie. Można go łatwo przenie
 
 Kod można łatwo rozbudować np. o inne formy wizualizacji, eksport danych do CSV, czy zapis konfiguracji użytkownika.
 
-Licencja
-Projekt udostępniany na licencji MIT **********
-(Lub innej, jeśli wolisz – podaj szczegóły lub usuń, jeśli nie dotyczy.)
 
-Autor
-********** (Wpisz swoje imię i nazwisko lub pseudonim oraz kontakt/GitHub jeśli chcesz)
-
-yaml
-Kopiuj
-Edytuj
-
----
-
-Daj znać, jeśli chcesz, żebym przygotował również:
-
-- plik `requirements.txt`
-- plik `app.py` jako punkt wejścia, jeśli obecny kod powinien być w nim
-- przykład `screenshot.png` do README
-
-Albo jeśli chcesz wygenerować angielską wersję `README.md`.
+Autor:
+Emilia Staśkowiak
