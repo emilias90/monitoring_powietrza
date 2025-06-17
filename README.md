@@ -71,11 +71,9 @@ Struktura projektu
 
 
 
-Sposób użycia
+Sposób użycia:
 Uruchom aplikację (main.py)
-
 Wpisz nazwę miasta i kliknij "Pobierz stacje"
-
 Wybierz stację i kliknij "Pobierz czujniki"
 
 Wybierz czujnik i kliknij "Pobierz daty"
