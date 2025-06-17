@@ -69,8 +69,11 @@ Struktura projektu
 
 
 Sposób użycia:
+
 Uruchom aplikację (main.py)
+
 Wpisz nazwę miasta i kliknij "Pobierz stacje"
+
 Wybierz stację i kliknij "Pobierz czujniki"
 
 Wybierz czujnik i kliknij "Pobierz daty"
@@ -80,8 +83,10 @@ Wybierz zakres dat i kliknij "Pobierz dane"
 Przeglądaj statystyki, rysuj wykresy i zarządzaj bazą danych
 
 Przykład działania
+
 (Tutaj możesz dodać zrzuty ekranu z aplikacji GUI pokazujące interfejs, np. screeny app.png, plot.png i dodać coś w stylu:)
 
+![image](https://github.com/user-attachments/assets/751a4d7e-5af3-41c6-81e5-8fd08058b6f8)
 
 ![Interfejs główny](docs/screenshot1.png)
 ![Wykres pomiarów](docs/plot_example.png)
