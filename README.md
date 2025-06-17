@@ -68,7 +68,7 @@ Struktura projektu
 
 
 
-Sposób użycia:
+# Sposób użycia:
 
 Uruchom aplikację (main.py)
 
@@ -82,15 +82,20 @@ Wybierz zakres dat i kliknij "Pobierz dane"
 
 Przeglądaj statystyki, rysuj wykresy i zarządzaj bazą danych
 
-Przykład działania
 
-(Tutaj możesz dodać zrzuty ekranu z aplikacji GUI pokazujące interfejs, np. screeny app.png, plot.png i dodać coś w stylu:)
+
+
+# Przykład działania
+
+interfejs GUI
 
 ![image](https://github.com/user-attachments/assets/751a4d7e-5af3-41c6-81e5-8fd08058b6f8)
 
-![Interfejs główny](docs/screenshot1.png)
-![Wykres pomiarów](docs/plot_example.png)
+
+
+
 Uwagi
+
 Aplikacja wykorzystuje dane z publicznego API. W przypadku problemów z połączeniem (np. brak internetu lub przeciążone API), pojawią się odpowiednie komunikaty.
 
 Domyślna baza danych to plik SQLite zapisany lokalnie. Można go łatwo przenieść lub usunąć przy pomocy przycisku "Usuń dane z bazy".
@@ -99,4 +104,5 @@ Kod można łatwo rozbudować np. o inne formy wizualizacji, eksport danych do C
 
 
 Autor:
+
 Emilia Staśkowiak
