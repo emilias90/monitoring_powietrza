@@ -60,11 +60,11 @@ Struktura projektu
 
 │   └── plotting.py         # Tworzenie wykresów i analiz
 
-├── tests/
+├── tests/                  # testy
 
-│   └── test_get_sensor.py         # testy
+│   └── test_get_sensor.py         
 
-│   └── test_stations.py         # testy
+│   └── test_stations.py        
 
 ├── app.py                  # Główny plik z interfejsem GUI
 
@@ -99,23 +99,26 @@ interfejs GUI
 
 wybrana miejścowiść:
 
-![img.png](img.png)
+![image](https://github.com/user-attachments/assets/8020af24-9ac4-41b2-bad9-a2861720514c)
+
 
 pobranie dostępnych dat z zapisanymi wartościami dla danego czujnika:
 
-![img_1.png](img_1.png)
+![image](https://github.com/user-attachments/assets/45bc5fa9-06c0-4239-ac5a-efc3de223321)
 
 pobrane dane z bazy (wyliczona średnia, podana min, max dla wybranego zakresu dat)
 
-![img_2.png](img_2.png)
+![image](https://github.com/user-attachments/assets/0617e0a2-260d-478e-9711-37b897e977a2)
+
 
 wykres dla wybranego czujnika z wybranym zakresem dat: 
 
-![img_3.png](img_3.png)
+![image](https://github.com/user-attachments/assets/2e310274-3457-4b1f-8afe-22674f0aed67)
+
 
 wyczyść dane GUI:
+![image](https://github.com/user-attachments/assets/678e141c-87b1-4c13-8753-ec7fa4b9bfae)
 
-![img_4.png](img_4.png)
 
 
 
