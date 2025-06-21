@@ -4,13 +4,13 @@ Aplikacja desktopowa w Pythonie służąca do monitorowania jakości powietrza w
 
 ## Spis treści
 
-- [Opis projektu](# opis_projektu)
-- [Wymagania]
-- [Instalacja]
-- [Struktura projektu]
-- [Sposób użycia]
-- [Przykład działania]
-- [Licencja]
+- [Opis projektu](#opis-projektu)
+- [Wymagania](#wymagania)
+- [Struktura projektu](#struktura-projektu)
+- [Instalacja](#instalacja)
+- [Sposób użycia](#sposob-uzycia)
+- [Przykład działania](#przyklad-dzialania)
+- [Testy](#testy)
 
 ---
 
