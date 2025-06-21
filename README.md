@@ -4,13 +4,13 @@ Aplikacja desktopowa w Pythonie służąca do monitorowania jakości powietrza w
 
 ## Spis treści
 
-- [Opis projektu](#opis-projektu)
-- [Wymagania](#wymagania)
-- [Instalacja](#instalacja)
-- [Struktura projektu](#struktura-projektu)
-- [Sposób użycia](#sposób-użycia)
-- [Przykład działania](#przykład-działania)
-- [Licencja](#licencja)
+- [Opis projektu]
+- [Wymagania]
+- [Instalacja]
+- [Struktura projektu]
+- [Sposób użycia]
+- [Przykład działania]
+- [Licencja]
 
 ---
 
@@ -34,47 +34,56 @@ Aplikacja umożliwia:
   - `tkinter`
   - `matplotlib`
   - `requests` 
-  - `sqlite3` (wbudowany)
+  - `sqlite3`
 
 
-Instalacja
-git clone ********** # (tu podam później link do ostatecznego repozytorium, np. GitHub)
-cd **********
-Uruchom aplikację:
 
+## Struktura projektu
 
 projekt_zaliczeniowy
-Struktura projektu
 
 ├── api/
 
-│   ├── stations.py         # Obsługa zapytań dot. stacji
+│   ├── stations.py         - Obsługa zapytań dot. stacji
 
-│   └── sensors.py          # Obsługa zapytań dot. czujników
+│   └── sensors.py          - Obsługa zapytań dot. czujników
 
 ├── db/
 
-│   └── database.py         # Operacje na bazie danych SQLite
+│   └── database.py         - Operacje na bazie danych SQLite
 
-├── visualization/
+├── gui/
 
-│   └── plotting.py         # Tworzenie wykresów i analiz
+│   └── app.py              - Główny plik z interfejsem GUI
 
-├── tests/                  # testy
+├── tests/                  - testy
 
 │   └── test_get_sensor.py         
 
 │   └── test_stations.py        
 
-├── app.py                  # Główny plik z interfejsem GUI
+├── visualization/
 
-├── main.py                 # Plik do uruchomienia GUI
+│   └── plotting.py         - Tworzenie wykresów i analiz
 
-├── README.md               # Ten plik
+├── air_quality.db          - Plik bazy danych SQLite z danymi o pomiarach
+
+├── main.py                 - Plik do uruchomienia GUI
+
+├── README.md               - Ten plik
+
+├── requirements.txt        - Lista zależności projektu
 
 
 
-# Sposób użycia:
+## Instalacja
+git clone ********** # (tu podam później link do ostatecznego repozytorium, np. GitHub)
+cd **********
+Uruchom aplikację:
+
+
+
+## Sposób użycia:
 
 Uruchom aplikację (main.py)
 
@@ -91,7 +100,7 @@ Przeglądaj statystyki, rysuj wykresy i zarządzaj bazą danych
 
 
 
-# Przykład działania
+## Przykład działania
 
 interfejs GUI
 
@@ -118,6 +127,26 @@ wykres dla wybranego czujnika z wybranym zakresem dat:
 
 wyczyść dane GUI:
 ![image](https://github.com/user-attachments/assets/678e141c-87b1-4c13-8753-ec7fa4b9bfae)
+
+
+
+
+## Testy
+
+W projekcie są testy do sprawdzenia, czy funkcje działają poprawnie.
+
+Pliki z testami są w folderze tests/:
+
+test_get_sensor.py – testy pobierania danych z czujników
+
+test_stations.py – testy stacji i czujników
+
+Do uruchamiania testów używam pytest. Trzeba go wcześniej zainstalować:
+
+np przez konsolę wpisując: pip install pytest
+
+Testy można potem uruchomić komendą pytest w głównym katalogu projektu.
+
 
 
 
