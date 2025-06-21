@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from datetime import datetime
-import matplotlib.pyplot as plt
 from api.stations import get_all_stations, filter_stations_by_city, get_sensors_for_station, APIConnectionError
 from api.sensors import get_sensor_data
 from db.database import (
@@ -13,7 +12,7 @@ from db.database import (
     insert_sensor,
     clear_database
 )
-from visualization.plotting import plot_measurements, analyze_measurements
+from visualization.plotting import plot_measurements
 
 
 class AirQualityApp:
@@ -64,11 +63,11 @@ class AirQualityApp:
         self.sensor_box = ttk.Combobox(self.root, textvariable=self.sensor_var, state="readonly", width=50)
         self.sensor_box.grid(row=2, column=0, columnspan=3, sticky="ew", padx=5, pady=5)
 
-        # Pobierz daty - na środku
+        # Pobierz daty
         ttk.Button(self.root, text="Pobierz daty", command=self.load_available_dates).grid(
             row=2, column=3, columnspan=2, padx=5)
 
-        # Data od / do – w jednej linii z comboboxami
+        # Data od / do
         ttk.Label(self.root, text="Data od:").grid(row=4, column=0, sticky="e", padx=5)
         self.date_from_box = ttk.Combobox(self.root, textvariable=self.date_from_var, state="readonly", width=20)
         self.date_from_box.grid(row=4, column=1, sticky="w", padx=5)
@@ -77,12 +76,12 @@ class AirQualityApp:
         self.date_to_box = ttk.Combobox(self.root, textvariable=self.date_to_var, state="readonly", width=20)
         self.date_to_box.grid(row=4, column=3, sticky="w", padx=5)
 
-        # Pobierz dane – na środku pod datami
+        # Pobierz dane
         ttk.Button(self.root, text="Pobierz dane", command=self.load_measurements).grid(
             row=5, column=1, columnspan=2, sticky="ew", padx=5, pady=10
         )
 
-        # Ramka na statystyki – cały rząd
+        # Ramka na statystyki
         self.stats_frame = ttk.LabelFrame(self.root, text="Statystyki pomiarów")
         self.stats_frame.grid(row=6, column=0, columnspan=4, sticky="ew", padx=10, pady=10)
 
@@ -96,7 +95,7 @@ class AirQualityApp:
         self.avg_label = ttk.Label(self.stats_frame, text="Średnia: -")
         self.avg_label.grid(row=2, column=0, sticky="w", padx=10)
 
-        # Dwa przyciski na dole – osobny rząd
+        # pozostałe
         ttk.Button(self.root, text="Wykres", command=self.plot_data).grid(
             row=7, column=1, sticky="ew", padx=5, pady=10
         )
@@ -384,9 +383,6 @@ class AirQualityApp:
         zwraca pustą listę.
 
         Format daty w `raw_values` jest oczekiwany jako ISO (YYYY-MM-DD...).
-
-        Returns:
-            list of tuples: [(data_str, wartosc_float), ...] spełniające kryterium dat.
         """
         if not hasattr(self, 'raw_values'):
             return []
@@ -433,8 +429,3 @@ class AirQualityApp:
             except Exception as e:
                 messagebox.showerror("Błąd", f"Wystąpił problem podczas usuwania danych:\n{e}")
 
-
-# if __name__ == "__main__":
-#     root = tk.Tk()
-#     app = AirQualityApp(root)
-#     root.mainloop()

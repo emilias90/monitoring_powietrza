@@ -55,22 +55,3 @@ def plot_measurements(measurements, param_name):
     plt.tight_layout()
     plt.show()
 
-
-def analyze_measurements(measurements):
-    values = [(m[0], m[1]) for m in measurements if m[1] is not None]
-    if not values:
-        return None
-
-    sorted_vals = sorted(values, key=lambda x: x[1])
-    min_val, min_date = sorted_vals[0][1], sorted_vals[0][0]
-    max_val, max_date = sorted_vals[-1][1], sorted_vals[-1][0]
-    avg_val = sum(v[1] for v in values) / len(values)
-
-    return {
-        "min": (min_val, min_date),
-        "max": (max_val, max_date),
-        "avg": avg_val,
-        "count": len(values),
-        "start": values[0][0],
-        "end": values[-1][0]
-    }
