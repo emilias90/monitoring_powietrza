@@ -60,6 +60,12 @@ Struktura projektu
 
 │   └── plotting.py         # Tworzenie wykresów i analiz
 
+├── tests/
+
+│   └── test_get_sensor.py         # testy
+
+│   └── test_stations.py         # testy
+
 ├── app.py                  # Główny plik z interfejsem GUI
 
 ├── main.py                 # Plik do uruchomienia GUI
@@ -91,6 +97,25 @@ interfejs GUI
 
 ![image](https://github.com/user-attachments/assets/751a4d7e-5af3-41c6-81e5-8fd08058b6f8)
 
+wybrana miejścowiść:
+
+![img.png](img.png)
+
+pobranie dostępnych dat z zapisanymi wartościami dla danego czujnika:
+
+![img_1.png](img_1.png)
+
+pobrane dane z bazy (wyliczona średnia, podana min, max dla wybranego zakresu dat)
+
+![img_2.png](img_2.png)
+
+wykres dla wybranego czujnika z wybranym zakresem dat: 
+
+![img_3.png](img_3.png)
+
+wyczyść dane GUI:
+
+![img_4.png](img_4.png)
 
 
 
@@ -98,7 +123,7 @@ Uwagi
 
 Aplikacja wykorzystuje dane z publicznego API. W przypadku problemów z połączeniem (np. brak internetu lub przeciążone API), pojawią się odpowiednie komunikaty.
 
-Domyślna baza danych to plik SQLite zapisany lokalnie. Można go łatwo przenieść lub usunąć przy pomocy przycisku "Usuń dane z bazy".
+Domyślna baza danych to plik SQLite zapisany lokalnie. Można go łatwo usunąć przy pomocy przycisku "Usuń dane z bazy".
 
 Kod można łatwo rozbudować np. o inne formy wizualizacji, eksport danych do CSV, czy zapis konfiguracji użytkownika.
 
